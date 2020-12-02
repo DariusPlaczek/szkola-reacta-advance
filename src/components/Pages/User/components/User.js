@@ -3,10 +3,10 @@ import Moment from 'react-moment';
 import 'moment-timezone';
 
 function User(props) {
-		const { value, id } = props; 
+		const { value } = props;
 
     return (
-			<div key={`${value.name.first}`} className="userlist-container" >
+			<div className="userlist-container" >
 				<div className="col-2">
 					<img className="list-image" alt={value.name.first} src={value.picture.large} />
 					<div className="another-column">
