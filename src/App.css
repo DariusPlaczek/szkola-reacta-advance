@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	background-color: #d6cec4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+html {
+	height: 100%;
+	width: 100%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+a {
+	text-decoration: none;
 }
 
-.App-link {
-  color: #61dafb;
+.main-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	height: 100vh;
+	background-color: #D6CEC4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.leftsidebar {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: 15%;
+	height: 100vh;
+	padding-top: 25px;
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 85%;
+	padding: 30px;
+	margin-left: 15%;
+}
+
+.link {
+	background-color: #212121;
+	padding: 15px 0;
+	margin: 5px 0;
+	width: 100%;
+	text-align: center;
+	text-transform: uppercase;
+	border-radius: 0 15px 15px 0;
+	cursor: pointer;
+	text-decoration: none;
+	color: #FFD500;
+	margin-left: -35px;
+	-webkit-box-shadow: 4px 4px 7px -4px #000000;
+	box-shadow: 4px 4px 7px -4px #000000;
+	transition: all .3s ease-out;
+}
+
+.is-active {
+	margin-left: 0;
+	transition: all .3s ease-out;
+}
+
+.link:hover {
+	transition: all .3s ease-out;
+	margin-left: -25px;
+}
+
+.is-active:hover {
+	margin-left: 0;
+}
+
+.toogle-bar-container {
+	position: fixed;
+	right: 0;
+	width: auto;
+	height: auto;
+}
+
+.toogle-bar-menu {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	width: 29px;
+	cursor: pointer;
+}
+
+.toogle-bar {
+	border: 1px solid #212121;
+	margin: 5px;
+	-webkit-box-shadow: 4px 4px 7px -4px #000000; 
+	box-shadow: 4px 4px 7px -4px #000000;
+}
+
+.toogle-bar:hover {
+	border-color: #334343;
+}
+
+.toogle-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: absolute;
+	top: 70px;
+	right: 0;
+	background-color: #334343;
+	width: 250px;
+	height: 250px;
+	transition: all .3s ease-out;
+	-webkit-box-shadow: 4px 4px 7px -4px #000000; 
+	box-shadow: 4px 4px 7px -4px #000000;
+	text-transform: uppercase;
+}
+
+.toogle-link {
+	display: flex;
+	align-items: center;
+	color: #FFD500;
+	padding: 10px;
+	text-decoration: none;
+	height: 35px;
+}
+
+.is-activeToogle {
+	font-weight: 800;
+}
+
+/********************* LISTCONTAINER **********************************/
+
+.list-wrapper {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.userlist-container {
+	display: flex;
+	flex-direction: column;
+	width: 550px;
+	background-color: #dddddd;
+	border: 1px solid #eeeeee;
+	margin: 15px;
+	border-radius: 15px;
+	-webkit-box-shadow: 4px 4px 7px -4px #000000;
+	box-shadow: 4px 4px 7px -4px #000000;
+	color: #334343;
+	transition: all .3s ease-out;
+	cursor: pointer;
+	text-decoration: none;
+
+}
+
+.userlist-container:hover {
+	transform: rotate(-2deg);
+	transition: all .3s ease-out;
+}
+
+.col-2 {
+	display: flex;
+	flex-direction: row;
+}
+
+.another-column {
+	padding: 15px;
+}
+
+.list-image {
+	height: 240px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	border-radius: 15px 0 0 15px;
+}
+
+input, button {
+	padding: 10px;
+	border-radius: 20px;
+	border: 1px solid #dddddd;
+	background-color: #dddddd;
+	margin: 7px;
+}
+
+button {
+	font-weight: 800;
+	cursor: pointer;
+	-webkit-box-shadow: 4px 4px 7px -7px #000000;
+	box-shadow: 4px 4px 7px -7px #000000;
+}
+
+.user {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input:focus {
+	border-radius: 20px;
+	border: 1px transparent solid;
+}
+
+.footer-user {
+	display: flex;
+	justify-content: space-around;
+	width: 580px;
+}
+
+.borderTop {
+	border-top: 1px solid #c0bab2;
+}
+
+.borderBottom {
+	border-bottom: 1px solid #c0bab2;
 }
