@@ -20,18 +20,17 @@ function UsersList() {
         })
     }, [])
 
-
     return (
-        <>
-            <h1>UsersList</h1>
-            {isLoading && <p>...Loading</p>}
-            {isError && <p>An error has occurred</p>}
-            <div className="list-wrapper borderTop" >
-            {usersList.map((value, id) => (
-                <User key={`${id}-${value.name.first}`} value={value} />
-            ))}
-            </div>
-        </>
+      <>
+        <h1>UsersList</h1>
+        {isLoading && <p>...Loading</p>}
+        {isError && <p>An error has occurred</p>}
+        <div className="list-wrapper borderTop" >
+        {usersList.map((value, id) => (
+            <User key={`${id}-${value.name.first}`} value={value} />
+        ))}
+        </div>
+      </>
     )
 }
 
