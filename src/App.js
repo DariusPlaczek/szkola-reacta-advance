@@ -16,12 +16,9 @@ function App() {
         <Content>
           <Switch>
             <Route exact path='/users'>
-    <UsersList />
-</Route>
-<Switch>
-      <Route exact path='/users/:id' component={UserDetails} />
-
-      </Switch>
+              <UsersList />
+            </Route>
+            <Route path='/user' component={UserDetails} />
             <Route exact path='/' component={Home} />
           </Switch>
         </Content>
