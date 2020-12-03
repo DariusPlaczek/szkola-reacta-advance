@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react'
 
 import User from './components/User'
 
+
 function UsersList() {
     const [usersList, setUsersList] = useState([])
     const [isLoading, setLoading] = useState(true)
@@ -26,12 +27,13 @@ function UsersList() {
         {isLoading && <p>...Loading</p>}
         {isError && <p>An error has occurred</p>}
         <div className="list-wrapper borderTop" >
-        {usersList.map((value, id) => (
-            <User key={`${id}-${value.name.first}`} value={value} />
-        ))}
+            {usersList.map((value, id) => (
+               <User key={`${id}-${value.name.first}`} value={value} />
+           ))}
         </div>
       </>
     )
 }
 
 export default UsersList
+

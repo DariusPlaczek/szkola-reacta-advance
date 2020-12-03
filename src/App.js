@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Home, UsersList } from './components/Pages'
+import { Home, UsersList, UserDetails } from './components/Pages'
 import { Content, LeftSideBar } from './components/SiteContainer'
 
 function App() {
@@ -15,8 +15,14 @@ function App() {
         <LeftSideBar />
         <Content>
           <Switch>
-            <Route path='/users' component={UsersList} />
-            <Route path='/' component={Home} />
+            <Route exact path='/users'>
+    <UsersList />
+</Route>
+<Switch>
+      <Route exact path='/users/:id' component={UserDetails} />
+
+      </Switch>
+            <Route exact path='/' component={Home} />
           </Switch>
         </Content>
       </div>
