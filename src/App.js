@@ -18,7 +18,7 @@ function App() {
             <Route exact path='/users'>
               <UsersList />
             </Route>
-            <Route path='/user' component={UserDetails} />
+            <Route path='/user/:id' component={UserDetails} />
             <Route exact path='/' component={Home} />
           </Switch>
         </Content>
