@@ -36,7 +36,7 @@ function User(props) {
         pathname:`/user/${userDetail.id}`,
         state: userDetail
         }}>
-           <div className="userlist-container" >
+           <div className="userlist-container ulc-utils " >
             <div className="col-2">
               <img className="list-image" alt={userDetail.name} src={userDetail.img} />
               <div className="another-column">

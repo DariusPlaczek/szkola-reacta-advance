@@ -1,7 +1,7 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import "react-placeholder/lib/reactPlaceholder.css";
+
+import Map from '../../Utils/Map'
 
 function UserDetails() {
     const location = useLocation();
@@ -23,6 +23,7 @@ function UserDetails() {
 
     return (
         <>
+        <h1>UsersDetails</h1>
            <div className="userlist-container" >
             <div className="col-2">
               <img className="list-image" alt={user.name} src={user.img} />
@@ -40,18 +41,7 @@ function UserDetails() {
               </div>
             </div>
           </div>
-
-          <MapContainer style={{height: '400px', width:'75%'}} center={position} zoom={5} scrollWheelZoom={true}>
-            <TileLayer
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            <Marker position={position}>
-              <Popup>
-                I Life here. <br /> Nice Place.
-              </Popup>
-            </Marker>
-          </MapContainer>
+          <Map position={position} />
         </>
     )
 }

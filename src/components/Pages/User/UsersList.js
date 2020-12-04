@@ -6,7 +6,7 @@ import User from './User'
 
 
 function UsersList() {
-    const howManyUsers = 20;
+    const howManyUsers = 10;
     const arr = Array(howManyUsers).fill()
     const [usersList, setUsersList] = useState([])
     const [isLoading, setLoading] = useState(true)
@@ -21,7 +21,7 @@ function UsersList() {
             setTimeout(() => {
                 setUsersList(data.results)
                 setLoading(false)
-            }, 1000);
+            }, 6000);
         })
         .catch((error) => {
             setError(true)
