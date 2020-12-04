@@ -1,19 +1,27 @@
 import React, { useState, useEffect} from 'react'
+import ReactPlaceholder from 'react-placeholder';
+import "react-placeholder/lib/reactPlaceholder.css";
 
-import User from './components/User'
+import User from './User'
 
 
 function UsersList() {
+    const howManyUsers = 20;
+    const arr = Array(howManyUsers).fill({})
     const [usersList, setUsersList] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [isError, setError] = useState(false)
 
+
     useEffect(() => {
-        fetch('https://randomuser.me/api/?results=10')
+
+        fetch(`https://randomuser.me/api/?results=${howManyUsers}`)
         .then((response) => response.json())
         .then((data) => {
-            setUsersList(data.results)
-            setLoading(false)
+            setTimeout(() => {
+                setUsersList(data.results)
+                setLoading(false)
+            }, 10000);
         })
         .catch((error) => {
             setError(true)
@@ -21,15 +29,20 @@ function UsersList() {
         })
     }, [])
 
+    const isLoadingData = () => {
+        return <ReactPlaceholder className="userlist-container placeholder" ready={!isLoading} rows={9} type='media' />
+    }
+
+
     return (
       <>
         <h1>UsersList</h1>
-        {isLoading && <p>...Loading</p>}
         {isError && <p>An error has occurred</p>}
         <div className="list-wrapper borderTop" >
-            {usersList.map((value, id) => (
-               <User key={`${id}-${value.name.first}`} value={value} />
-           ))}
+                {isLoading && arr.map(() => isLoadingData())}
+                {usersList.map((value, id) => (
+                    <User key={`${id}-${value.name.first}`} value={value} />
+                ))}
         </div>
       </>
     )

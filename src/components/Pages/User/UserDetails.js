@@ -20,7 +20,7 @@ function UserDetails() {
     console.log(user);
 
     return (
-        <div>
+        <>
            <div className="userlist-container" >
             <div className="col-2">
               <img className="list-image" alt={user.name} src={user.img} />
@@ -38,7 +38,7 @@ function UserDetails() {
               </div>
             </div>
           </div>
-        </div>
+        </>
     )
 }
 

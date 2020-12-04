@@ -5,7 +5,8 @@
 
 body {
 	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-	background-color: #d6cec4;
+	/* background-color: #d6cec4; */
+	background-color: #fff;
 }
 
 html {
@@ -22,7 +23,7 @@ a {
 	flex-direction: row;
 	width: 100%;
 	height: 100vh;
-	background-color: #D6CEC4;
+	/*background-color: #D6CEC4;*/
 }
 
 .leftsidebar {
@@ -214,4 +215,22 @@ input:focus {
 
 .borderBottom {
 	border-bottom: 1px solid #c0bab2;
+}
+
+.placeholder {
+	display: flex;
+	flex-direction: row;
+	width: 550px;
+	height: 240px;
+}
+
+.round-shape {
+	width: 250px !important;
+	min-width: 250px !important;
+	height: 240px !important;
+	border-radius: 15px !important;
+}
+
+.text-block {
+	margin: 10px !important;
 }
