@@ -7,7 +7,7 @@ import User from './User'
 
 function UsersList() {
     const howManyUsers = 20;
-    const arr = Array(howManyUsers).fill({})
+    const arr = Array(howManyUsers).fill()
     const [usersList, setUsersList] = useState([])
     const [isLoading, setLoading] = useState(true)
     const [isError, setError] = useState(false)
@@ -21,7 +21,7 @@ function UsersList() {
             setTimeout(() => {
                 setUsersList(data.results)
                 setLoading(false)
-            }, 10000);
+            }, 1000);
         })
         .catch((error) => {
             setError(true)
@@ -29,8 +29,8 @@ function UsersList() {
         })
     }, [])
 
-    const isLoadingData = () => {
-        return <ReactPlaceholder className="userlist-container placeholder" ready={!isLoading} rows={9} type='media' />
+    const isLoadingData = (key) => {
+        return <ReactPlaceholder key={`ph-${key}`} className="userlist-container placeholder" ready={!isLoading} rows={9} type='media' />
     }
 
 
@@ -39,7 +39,7 @@ function UsersList() {
         <h1>UsersList</h1>
         {isError && <p>An error has occurred</p>}
         <div className="list-wrapper borderTop" >
-                {isLoading && arr.map(() => isLoadingData())}
+                {isLoading && arr.map((value, key) => isLoadingData(key))}
                 {usersList.map((value, id) => (
                     <User key={`${id}-${value.name.first}`} value={value} />
                 ))}

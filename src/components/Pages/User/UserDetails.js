@@ -1,5 +1,7 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom';
+import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import "react-placeholder/lib/reactPlaceholder.css";
 
 function UserDetails() {
     const location = useLocation();
@@ -17,7 +19,7 @@ function UserDetails() {
         registered: location.state.registered
     }
 
-    console.log(user);
+    const position = [user.latitude, user.longitude]
 
     return (
         <>
@@ -38,6 +40,15 @@ function UserDetails() {
               </div>
             </div>
           </div>
+
+          <MapContainer style={{height: '400px', width:'75%'}} center={position} zoom={5} scrollWheelZoom={true}>
+            <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={position} />
+          </MapContainer>
+
         </>
     )
 }
