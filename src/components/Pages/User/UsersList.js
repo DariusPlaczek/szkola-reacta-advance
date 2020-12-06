@@ -12,9 +12,7 @@ function UsersList() {
     const [isLoading, setLoading] = useState(true)
     const [isError, setError] = useState(false)
 
-
     useEffect(() => {
-
         fetch(`https://randomuser.me/api/?results=${howManyUsers}`)
         .then((response) => response.json())
         .then((data) => {
@@ -32,7 +30,6 @@ function UsersList() {
     const isLoadingData = (key) => {
         return <ReactPlaceholder key={`ph-${key}`} className="userlist-container placeholder" ready={!isLoading} rows={9} type='media' />
     }
-
 
     return (
       <>
