@@ -37,7 +37,7 @@ function UsersList() {
     return (
       <>
         <h1>UsersList</h1>
-        {isError && <p>An error has occurred</p>}
+        {isError && <p className="error">An error has occurred</p>}
         <div className="list-wrapper borderTop" >
                 {isLoading && arr.map((value, key) => isLoadingData(key))}
                 {usersList.map((value, id) => (
