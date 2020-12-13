@@ -6,7 +6,7 @@ import {
   Route,
 } from "react-router-dom";
 
-import { Home, UsersList, UserDetails } from './components/Pages'
+import { Home, UsersList, UserDetails, TestOne } from './components/Pages'
 import { Content, LeftSideBar } from './components/SiteContainer'
 
 function App() {
@@ -21,6 +21,7 @@ function App() {
             </Route>
             <Route path='/user/:id' component={UserDetails} />
             <Route exact path='/' component={Home} />
+            <Route path='/tests' component={TestOne} />
           </Switch>
         </Content>
       </div>
