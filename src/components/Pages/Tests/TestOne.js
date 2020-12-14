@@ -1,9 +1,4 @@
-import React, { useState, useCallback } from 'react'
-
-
-function changeNumber(num, valueSet) {
-  valueSet(parseInt(num.target.value))
-}
+import React, { useState } from 'react'
 
 
 function TestOne() {
@@ -15,8 +10,12 @@ function TestOne() {
     setSum(numberA + numberB)
   }
 
-  const testWhat = (event) => {
-    console.log(event.target.value);
+  const numberASet = (event) => {
+    setNumberA(parseInt(event.target.value));
+  }
+
+  const numberBSet = (event) => {
+    setNumberB(parseInt(event.target.value));
   }
 
   return (
@@ -24,8 +23,8 @@ function TestOne() {
       <h1>Test ONE</h1>
       <h2>{`Number A: ${numberA}`}</h2>
       <h2>{`Number B: ${numberB}`}</h2>
-      <input type="number" placeholder="Number A" onChange={event => changeNumber(event, setNumberA)}></input>
-      <input type="number" placeholder="Number B" onChange={testWhat}></input>
+      <input type="number" placeholder="Number A" onChange={numberASet}></input>
+      <input type="number" placeholder="Number B" onChange={numberBSet}></input>
       <h2>{`Sum: ${sum}`}</h2>
       <button onClick={addition}>Addition</button>
     </>
