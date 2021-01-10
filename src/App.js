@@ -5,9 +5,15 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import { createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
 
 import { Home, UsersList, UserDetails, TestOne } from './components/Pages'
 import { Content, LeftSideBar } from './components/SiteContainer'
+
 
 function App() {
   return (
