@@ -19,7 +19,7 @@ function UsersList() {
             setTimeout(() => {
                 setUsersList(data.results)
                 setLoading(false)
-            }, 6000);
+            }, 1000);
         })
         .catch((error) => {
             setError(true)
