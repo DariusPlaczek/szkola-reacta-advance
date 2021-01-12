@@ -3,11 +3,10 @@ import ReactPlaceholder from "react-placeholder";
 import "react-placeholder/lib/reactPlaceholder.css";
 import { connect } from "react-redux";
 
-import { loads, reset, add } from "./redux";
 import User from "./User";
 
 function UsersList(props) {
-  const { users, loadValue, resetValue, addValue } = props;
+  const { users } = props;
   console.log(props);
   const howManyUsers = 0;
   const arr = Array(howManyUsers).fill();
@@ -16,7 +15,7 @@ function UsersList(props) {
   const [isError, setError] = useState(false);
 
   useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=${users}`)
+    fetch(`https://randomuser.me/api/?results=10`)
       .then((response) => response.json())
       .then((data) => {
           setUsersList(data.results);
@@ -44,9 +43,7 @@ function UsersList(props) {
     <>
       <h1>UsersList</h1>
       {isError && <p className="error">An error has occurred</p>}
-      <button onClick={() => loadValue()}>Load Users</button>
-      <button>Reset Users</button>
-      <button onClick={() => addValue()}>Add new User Users</button>
+
 
       <div className="list-wrapper borderTop">
         {isLoading && arr.map((value, key) => isLoadingData(key))}
@@ -62,10 +59,6 @@ const mapStateToProps = (state) => ({
   users: state.usersCount.usersCount,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  loadValue: () => dispatch(loads()),
-  resetValue: () => dispatch(reset()),
-  addValue: () => dispatch(add()),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersList);
+
+export default connect(mapStateToProps)(UsersList);
