@@ -1,35 +1,41 @@
-import React from 'react'
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import { createStore, applyMiddleware } from "redux";
-import thunk from "redux-thunk";
+import React from "react";
 import { Provider } from "react-redux";
+import { createStore } from "redux";
+//import thunk from "redux-thunk";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home, UsersList, UserDetails, TestOne } from './components/Pages'
-import { Content, LeftSideBar } from './components/SiteContainer'
+import {
+  Home,
+  UsersList,
+  UserDetails,
+  TestOne,
+} from "./components/Pages";
 
+import { Content, LeftSideBar } from "./components/SiteContainer";
+import rootReducer from "./rootReducer";
+
+//const store = createStore(rootReducer, applyMiddleware(thunk));
+const store = createStore(rootReducer);
 
 function App() {
   return (
     <Router>
       <div className="main-container">
-        <LeftSideBar />
-        <Content>
-          <Switch>
-            <Route exact path='/users'>
-              <UsersList />
-            </Route>
-            <Route path='/user/:id' component={UserDetails} />
-            <Route exact path='/' component={Home} />
-            <Route path='/tests' component={TestOne} />
-          </Switch>
-        </Content>
+        <Provider store={store}>
+          <LeftSideBar />
+          <Content>
+            <Switch>
+              <Route exact path="/users">
+                <UsersList />
+              </Route>
+              <Route path="/user/:id" component={UserDetails} />
+              <Route exact path="/" component={Home} />
+              <Route path="/tests" component={TestOne} />
+            </Switch>
+          </Content>
+        </Provider>
       </div>
     </Router>
   );

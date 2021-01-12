@@ -1,22 +1,21 @@
-import React, { useState } from 'react'
-
+import React, { useState } from "react";
 
 function TestOne() {
-  const [numberA, setNumberA] = useState(0)
-  const [numberB, setNumberB] = useState(0)
-  const [sum, setSum] = useState(0)
+  const [numberA, setNumberA] = useState(0);
+  const [numberB, setNumberB] = useState(0);
+  const [sum, setSum] = useState(0);
 
   const addition = () => {
-    setSum(numberA + numberB)
-  }
+    setSum(numberA + numberB);
+  };
 
   const numberASet = (event) => {
     setNumberA(parseInt(event.target.value));
-  }
+  };
 
   const numberBSet = (event) => {
     setNumberB(parseInt(event.target.value));
-  }
+  };
 
   return (
     <>
@@ -28,7 +27,7 @@ function TestOne() {
       <h2>{`Sum: ${sum}`}</h2>
       <button onClick={addition}>Addition</button>
     </>
-  )
+  );
 }
 
-export default TestOne
+export default TestOne;

@@ -1,55 +1,24 @@
-const FETCH_POSTS_REQUESTED = "users/FETCH_POSTS_REQUESTED";
-const FETCH_POSTS_SUCCEDED = "users/FETCH_POSTS_SUCCEDED";
-const FETCH_POSTS_FAILED = "users/FETCH_POSTS_FAILED";
+const FETCH_LOAD = "users/FETCH_LOAD";
+const FETCH_RESET = "users/FETCH_RESET";
+const FETCH_ADD = "users/FETCH_ADD";
+
+export const loads = () => ({ type: FETCH_LOAD });
+export const reset = () => ({ type: FETCH_RESET });
+export const add = () => ({ type: FETCH_ADD });
 
 const INITIAL_STATE = {
-  users: [],
-  isLoading: false,
-  isError: false,
-};
-
-const fetchRequested = () => ({ type: FETCH_POSTS_REQUESTED });
-const fetchFailed = () => ({ type: FETCH_POSTS_FAILED });
-const fetchSucceded = (data) => ({ type: FETCH_POSTS_SUCCEDED, payload: data });
-
-export const fetchUsers = () => {
-  return function (dispatch) {
-    dispatch(fetchRequested());
-
-    fetch("ttps://randomuser.me/api/?results=10")
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch(fetchSucceded(data.slice(0, 7)));
-      })
-      .catch((error) => {
-        dispatch(fetchFailed());
-      });
-  };
+  usersCount: 1
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case FETCH_POSTS_REQUESTED:
-      return {
-        ...state,
-        isLoading: true,
-        isError: false,
-      };
-    case FETCH_POSTS_SUCCEDED:
-      return {
-        ...state,
-        users: action.payload,
-        isLoading: false,
-        isError: false,
-      };
-    case FETCH_POSTS_FAILED:
-      return {
-        ...state,
-        isLoading: false,
-        isError: true,
-      };
-
+    case FETCH_LOAD:
+      return { ...state, usersCount: 10 };
+    case FETCH_RESET:
+      return { ...state, usersCount: 1 };
+    case FETCH_ADD:
+      return { ...state, usersCount: state.usersCount + 1 };
     default:
-      return state;
+      return state
   }
 }
