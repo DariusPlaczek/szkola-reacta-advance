@@ -7,7 +7,6 @@ function NavMenu({ styles, isActive }) {
         <>
         <NavLinks linkStyle={styles} isActive={isActive} linkName="Home" linkTo="/" />
         <NavLinks linkStyle={styles} isActive={isActive} linkName="Users" linkTo="/users" />
-        <NavLinks linkStyle={styles} isActive={isActive} linkName="Test" linkTo="/tests" />
         </>
     )
 }
