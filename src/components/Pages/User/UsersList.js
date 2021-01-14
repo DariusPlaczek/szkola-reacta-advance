@@ -1,64 +1,28 @@
-import React, { useState, useEffect } from "react";
-import ReactPlaceholder from "react-placeholder";
-import "react-placeholder/lib/reactPlaceholder.css";
-import { connect } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 
+import useFetch from "../../Utils/useFetch";
 import User from "./User";
 
-function UsersList(props) {
-  const { users } = props;
-  console.log(props);
-  const howManyUsers = 0;
-  const arr = Array(howManyUsers).fill();
-  const [usersList, setUsersList] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [isError, setError] = useState(false);
+function UsersList() {
+  const { usersList } = useFetch();
+  const countUsers = useSelector((state) => state.usersCount.usersCount);
 
-  useEffect(() => {
-    fetch(`https://randomuser.me/api/?results=10`)
-      .then((response) => response.json())
-      .then((data) => {
-          setUsersList(data.results);
-          setLoading(false);
-      })
-      .catch((error) => {
-        setError(true);
-        setLoading(false);
-      });
-  }, [users]);
-
-  const isLoadingData = (key) => {
-    return (
-      <ReactPlaceholder
-        key={`ph-${key}`}
-        className="userlist-container placeholder"
-        ready={!isLoading}
-        rows={9}
-        type="media"
-      />
-    );
-  };
+  function name() {
+    if (countUsers === 0 || usersList.length === 0) {
+      return
+    }
+    return usersList.map((value) => (<User key={`${value.login.uuid}`} value={value} />))
+  }
 
   return (
     <>
       <h1>UsersList</h1>
-      {isError && <p className="error">An error has occurred</p>}
-
-
       <div className="list-wrapper borderTop">
-        {isLoading && arr.map((value, key) => isLoadingData(key))}
-        {usersList.map((value, id) => (
-          <User key={`${value.login.uuid}`} value={value} />
-        ))}
+       { name()}
       </div>
     </>
   );
 }
 
-const mapStateToProps = (state) => ({
-  users: state.usersCount.usersCount,
-});
-
-
-
-export default connect(mapStateToProps)(UsersList);
+export default UsersList;

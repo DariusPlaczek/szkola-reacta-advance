@@ -244,3 +244,8 @@ input:focus {
 	width: 100%;
 	text-transform: uppercase;
 }
+
+.users-button-container {
+	display: flex;
+	flex-direction: row;
+}

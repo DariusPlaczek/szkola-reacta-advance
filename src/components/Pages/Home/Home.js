@@ -1,29 +1,23 @@
 import React from "react";
-import { connect } from "react-redux";
-import { loads, reset, add } from "../User/functionRedux/redux";
-//import fetch from '../User/functionRedux/fetch'
+import { useSelector, useDispatch } from "react-redux";
 
-function Home(props) {
-  const { loadValue, resetValue, addValue } = props;
+import { loadUser, resetUser, addUser } from "../User/redux";
+
+function Home() {
+  const dispatch = useDispatch();
+  const countUsers = useSelector((state) => state.usersCount.usersCount);
 
   return (
     <>
-      <button onClick={() => loadValue()}>Load Users</button>
-      <button onClick={() => resetValue()}>Reset Users</button>
-      <button onClick={() => addValue()}>Add new User Users</button>
       <h1>Home</h1>
+      <div className="users-button-container">
+        <button onClick={() => dispatch(loadUser())}>Load</button>
+        <button onClick={() => dispatch(resetUser())}>Reset</button>
+        <button onClick={() => dispatch(addUser())}>Add</button>
+      </div>
+      <div>Users Count: {countUsers}</div>
     </>
   );
 }
 
-const mapStateToProps = (state) => ({
-  users: state.usersCount.usersCount,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  loadValue: () => dispatch(loads()),
-  resetValue: () => dispatch(reset()),
-  addValue: () => dispatch(add()),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default Home;
