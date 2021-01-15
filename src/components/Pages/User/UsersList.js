@@ -8,19 +8,20 @@ function UsersList() {
   const { usersList } = useFetch();
   const countUsers = useSelector((state) => state.usersCount.usersCount);
 
-  function name() {
+
+  function setUser() {
     if (countUsers === 0 || usersList.length === 0) {
-      return
+      return;
     }
-    return usersList.map((value) => (<User key={`${value.login.uuid}`} value={value} />))
+    return usersList.map((value) => (
+      <User key={`${value.login.uuid}`} value={value} />
+    ));
   }
 
   return (
     <>
       <h1>UsersList</h1>
-      <div className="list-wrapper borderTop">
-       { name()}
-      </div>
+      <div className="list-wrapper borderTop">{setUser()}</div>
     </>
   );
 }

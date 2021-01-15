@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { loadUser, resetUser, addUser } from "../User/redux";
+import { loadUser, addUser, resetUser } from "../User/redux";
+
 
 function Home() {
   const dispatch = useDispatch();

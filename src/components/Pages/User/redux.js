@@ -2,12 +2,13 @@ const FETCH_LOAD = "users/FETCH_LOAD";
 const FETCH_RESET = "users/FETCH_RESET";
 const FETCH_ADD = "users/FETCH_ADD";
 
+
 export const loadUser = () => ({ type: FETCH_LOAD });
 export const resetUser = () => ({ type: FETCH_RESET });
 export const addUser = () => ({ type: FETCH_ADD });
 
 const INITIAL_STATE = {
-  usersCount: 10
+  usersCount: 10,
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
@@ -19,7 +20,6 @@ export default function reducer(state = INITIAL_STATE, action) {
     case FETCH_ADD:
       return { ...state, usersCount: state.usersCount + 1 };
     default:
-      return state
+      return state;
   }
 }
-

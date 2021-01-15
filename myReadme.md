@@ -7,3 +7,5 @@ Reset - wyzerowanie listy użytkowników
 Add - pobiera jeszcze raz listę, ale dodaje tylko jednego użytkownika do tej już istniejącej
 
 Krok 3 - Zmodyfikuj komponent Users w taki sposób, aby po zamontowaniu sprawdzał, czy istnieją już użytkownicy w stanie aplikacji. Jeśli tak, to wyświetl tę listę. Jeśli nie, pobierz dane z API. Po przejściu na Home oraz powrót do Users komponent powinien wstawiać dane ze stanu aplikacji, który pełni w tym przypadku rodzaj cache.
+
+//https://codesandbox.io/s/cool-violet-t9fvg?file=/src/redux.js
