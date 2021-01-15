@@ -1,17 +1,22 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { Home, UsersList, UserDetails } from "./components/Pages";
+import { Home, UsersList, UserDetails, Messages } from "./components/Pages";
 
 import { Content, LeftSideBar } from "./components/SiteContainer";
 import rootReducer from "./rootReducer";
 
-const store = createStore(rootReducer, applyMiddleware(thunk));
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const middleware = [thunk];
+const store = createStore(
+  rootReducer,
+  composeEnhancers(applyMiddleware(...middleware))
+);
 
 function App() {
   return (
@@ -25,6 +30,7 @@ function App() {
                 <UsersList />
               </Route>
               <Route path="/user/:id" component={UserDetails} />
+              <Route exact path="/message" component={Messages} />
               <Route exact path="/" component={Home} />
             </Switch>
           </Content>

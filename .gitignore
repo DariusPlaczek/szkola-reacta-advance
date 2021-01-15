@@ -5,6 +5,7 @@
 /.pnp
 .pnp.js
 ./eslintcache
+/src/components/Pages/Message/ReduxMessageForm.js
 
 # testing
 /coverage
