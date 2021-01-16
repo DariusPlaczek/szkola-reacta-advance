@@ -18,11 +18,9 @@ function Home() {
         <button onClick={() => dispatch(resetUser())}>Reset</button>
         <button onClick={() => dispatch(addUser())}>Add</button>
       </div>
-      <div>Users Count: {countUsers}</div>
+      <div className="users-count">Users Count: {countUsers}</div>
 
-      {messages.map((value, id) => (
-        <SingleMessage key={`messages-${id}`} message={value} />
-      ))}
+      <SingleMessage messages={messages} />
     </>
   );
 }
