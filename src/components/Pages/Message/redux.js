@@ -7,6 +7,7 @@ export const addMessage = (message) => ({
 
 const INITIAL_STATE = {
   messages: [
+    { id: "69eae68b-c739-4662-aff8-293fac709344", text: "Witam!", color: "#e92b2c" },
     { id: "a775b62b-4031-43d1-9fca-eff8d769ca4f", text: "Ucze sie Reacta!", color: "#DDDDDD" },
     { id: "0b3429b8-ea8d-406f-8fa5-7f5c3b7974de", text: "ale nadal nic nie umiem", color: "#f0da50" }
   ]
